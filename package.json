@@ -8,22 +8,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "put git repo url here"
+    "url": "https://github.com/UCLComputerScience/103P_2018_team57"
   },
-  "author": "Médi-Rémi Hashim",
+  "author": "Hiru Ranasinghe",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.10.0",
-    "browserify-middleware": "^7.0.0",
+    "browserify-middleware": "^8.1.0",
     "csurf": "^1.6.3",
     "express": "^4.13.2",
     "express-session": "^1.9.3",
     "is-root": "^1.0.0",
-    "nunjucks": "^1.1.0",
+    "nunjucks": "^3.1.2",
+    "randomstring": "^1.1.5",
     "tcp-bind": "^1.1.1"
   },
   "devDependencies": {
-    "supertest": "^1.0.1",
+    "supertest": "^3.0.0",
     "tape": "^4.0.1"
   }
 }

@@ -149,7 +149,19 @@ body {
     margin: 10px 5px;
 }
 
-#msform .action-button:hover, #msform .action-button:focus {
+#msform .download-button {
+    width: 300px;
+    background: #ffc34f;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus, #msform .download-button:hover {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #f3b20a;
 }
 
