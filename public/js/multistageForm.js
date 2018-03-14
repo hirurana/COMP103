@@ -39,6 +39,7 @@ $(".next").click(function(){
     //this comes from the custom easing plugin
     easing: 'easeInOutBack'
   });
+  ajaxSubmitForm()
 });
 
 $(".previous").click(function(){
