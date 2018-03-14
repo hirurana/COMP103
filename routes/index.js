@@ -19,7 +19,7 @@ module.exports = function(app) {
 	})
 
 	app.post("/project/:projectID/save", function(req, res) {
-		console.log(req.params, req)
+		// console.log(req.params, req)
 		db.editProject(req.params.projectID, {
 			projectName: req.body.projectName,
 			projectManager: req.body.projectManager,

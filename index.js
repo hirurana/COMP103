@@ -7,6 +7,8 @@ var fd = alloc(config.port)
 // process.setuid(process.argv[2])
 // process.setgid(process.argv[3])
 
-app.listen({ fd: fd }, function() {
-	console.log("Listening on:", config.port)
-})
+// app.listen({ fd: fd }, function() {
+// 	console.log("Listening on:", config.port)
+// })
+
+app.listen(8000, () => console.log("Server running on port 8000"))
