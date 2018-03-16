@@ -62,6 +62,7 @@ var randomstring = require("randomstring");
 // const util = require('util');
 var moment = require('moment');
 const nodeRequest = require('request');
+const util = require("util")
 
 const client_id = "2824966001992944.0374225578827717"
 const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
@@ -84,7 +85,7 @@ app.get("/callback", function(request, response) {
   if (request.query.state in states) {
     if (moment(states[request.query.state]).add(300, 'seconds') > timeNow) {
       if (request.query.result == "denied") {
-        var deniedText = util.format('The login operation for state %s was denied', request.query.state);
+        var deniedText = `The login operation for state ${request.query.state} was denied`
         response.send(deniedText);
       } else {
         // Successful login
