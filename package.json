@@ -12,7 +12,6 @@
     "url": "https://github.com/UCLComputerScience/103P_2018_team57"
   },
   "author": "Hiru Ranasinghe",
-  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.10.0",
     "browserify-middleware": "^8.1.0",
@@ -22,11 +21,9 @@
     "is-root": "^1.0.0",
     "nunjucks": "^3.1.2",
     "randomstring": "^1.1.5",
-    "tcp-bind": "^1.2.0",
     "uuid": "^3.2.1"
   },
-  "devDependencies": {
-    "supertest": "^3.0.0",
-    "tape": "^4.0.1"
+  "engines": {
+    "node": "8.9.4"
   }
 }
