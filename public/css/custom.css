@@ -290,3 +290,7 @@ body {
   max-width: 500px;
   margin: auto;
 }
+
+.no-underline {
+  text-decoration: none !important;
+}
