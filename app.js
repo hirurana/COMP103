@@ -6,8 +6,6 @@ var app = express()
 
 app.disable("x-powered-by")
 
-app.use("/js/main.js", browserify("./client/js/index.js"))
-
 app.use(express.static(__dirname + "/public"))
 
 var sessionSettings = {
