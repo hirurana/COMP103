@@ -2,7 +2,7 @@ const db = require("../lib/db")
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		res.redirect("/project/project-1")
+		res.redirect("/project/6f404e57-4407-4849-bec3-689ef714a206")
 	})
 
 	app.get("/project/:projectID", function(req, res) {
@@ -37,14 +37,22 @@ module.exports = function(app) {
 		res.redirect(`/project/${projectID}`)
 	})
 
-	app.get('/download/Team_57_Report_2.docx', function(req, res){
-		var file = __dirname + '/../Team_57_Report_2.docx';
+	app.get('/download/templates', function(req, res){
+		var file = __dirname + '/../public/res/Templates.zip';
 		res.download(file);
 	})
 
-	app.get("*", function(req, res) {
-		res.send("404 - Page not found")
+	app.get('/download/guides', function(req, res){
+		var file = __dirname + '/../public/res/Guides.zip';
+		res.download(file);
 	})
+
+	app.get('/download/suppliers', function(req, res){
+		var file = __dirname + '/../public/res/Supplier\ table.pdf';
+		res.download(file);
+	})
+
+
 
 	// server.js
 // where your node app starts
@@ -132,4 +140,7 @@ module.exports = function(app) {
 //     }))
 //   }
 // });
+	app.get("*", function(req, res) {
+		res.send("404 - Page not found")
+	})
 }
