@@ -11,4 +11,5 @@ var fd = alloc(config.port)
 // 	console.log("Listening on:", config.port)
 // })
 
+var port = process.env.PORT || 1337;
 app.listen(8000, () => console.log("Server running on port 8000"))
