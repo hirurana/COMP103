@@ -2,7 +2,7 @@ const db = require("../lib/db")
 
 module.exports = function(app) {
 	app.use(function(req, res, next) {
-		res.setHeader("Content-Security-Policy", "script-src 'self' 'https://fonts.googleapis.com' 'https://getbootstrap.com/docs/3.3/favicon.ico' 'https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css' 'https://fonts.googleapis.com/css?family=Montserrat' 'https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js' ");
+		res.setHeader("Content-Security-Policy", "script-src 'self' 'https://*'", "style-src 'self' 'https://fonts.googleapis.com/'");
 		return next();
 	});
 
