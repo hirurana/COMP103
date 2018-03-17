@@ -108,6 +108,7 @@ app.get("/callback", function(request, response) {
               "token": token,
               "auth_key": protectionKey
             }
+						console.log(user);
             users.push(user);
             var userId = users.length - 1;
             var redirectUrl = util.format('/complete?id=%s&key=%s', userId, protectionKey);

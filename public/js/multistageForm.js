@@ -181,7 +181,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 $(document).ready(function() {
   var id = getUrlParameter("id");
   var authKey = getUrlParameter("key");
-  var url = '/oauth/userdata/' + id + '/' + authKey;
+  var url = '/userdata/' + id + '/' + authKey;
   $.getJSON(url, function(data) {
     console.log(data);
     if (data["ok"] == true) {
