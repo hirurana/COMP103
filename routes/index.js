@@ -1,11 +1,6 @@
 const db = require("../lib/db")
 
 module.exports = function(app) {
-	app.use(function(req, res, next) {
-		res.setHeader("Content-Security-Policy", "script-src 'self' 'https://*'", "style-src 'self' 'https://fonts.googleapis.com/'");
-		return next();
-	});
-
 	app.get("/", function(req, res) {
 		res.redirect("/project/6f404e57-4407-4849-bec3-689ef714a206")
 	})
