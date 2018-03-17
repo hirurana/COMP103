@@ -83,7 +83,6 @@ $(".submit").click(function(){
 
 
 //checkbox js
-// 
 $(function () {
   $('.list-group.checked-list-box .list-group-item').each(function () {
 
@@ -161,4 +160,14 @@ $(function () {
   //   });
   //   $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
   // });
+  $(document).ready(function() {
+    var id = getUrlParameter("id");
+    var authKey = getUrlParameter("key");
+    if (id && authKey) {
+      var url = '/userdata/' + id + '/' + authKey;
+      $.getJSON(url, function(data) {
+        console.log(data);
+      });
+    }
+  });
 });
