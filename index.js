@@ -1,7 +1,7 @@
 var config = require("./config")
 var app = require("./app")
 
-app.listen(config.port, () => console.log("Server running on port 8000"))
+
 
 //OAuth stuff
 app.get("/authorise", function(request, response) {
@@ -78,3 +78,4 @@ app.get("/userdata/:id/:key", function(request, response) {
 	app.get("*", function(req, res) {
 		res.send("404 - Page not found")
 	})
+app.listen(config.port, () => console.log("Server running on port 8000"))
