@@ -1,4 +1,5 @@
 const db = require("../lib/db")
+const path = require('path');
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
@@ -70,6 +71,9 @@ const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3
 var states = { };
 
 var users = [];
+
+}
+
 //OAuth stuff
 app.get("/authorise", function(request, response) {
   var state = randomstring.generate();
@@ -79,7 +83,7 @@ app.get("/authorise", function(request, response) {
 });
 // TODO: change this to take the first project from db
 // app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
-app.get("/complete", (request, response) => response.sendFile(__dirname + '/../views/project/6f404e57-4407-4849-bec3-689ef714a206'));
+app.get("/complete", (request, response) => response.sendFile(path.resolve(__dirname + '/views/project/6f404e57-4407-4849-bec3-689ef714a206')));
 
 app.get("/callback", function(request, response) {
   var timeNow = moment();
@@ -145,4 +149,3 @@ app.get("/userdata/:id/:key", function(request, response) {
 	app.get("*", function(req, res) {
 		res.send("404 - Page not found")
 	})
-}
