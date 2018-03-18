@@ -77,8 +77,9 @@ app.get("/authorise", function(request, response) {
   var url = util.format('https://uclapi.com/oauth/authorise?client_id=%s&state=%s', client_id, state);
   response.redirect(url);
 });
-
-app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
+// TODO: change this to take the first project from db
+// app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
+app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/6f404e57-4407-4849-bec3-689ef714a206.html'));
 
 app.get("/callback", function(request, response) {
   var timeNow = moment();
