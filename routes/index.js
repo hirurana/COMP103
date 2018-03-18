@@ -79,7 +79,7 @@ app.get("/authorise", function(request, response) {
 });
 // TODO: change this to take the first project from db
 // app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
-app.get("/complete", (request, response) => response.sendFile(__dirname + '../views/project/6f404e57-4407-4849-bec3-689ef714a206'));
+app.get("/complete", (request, response) => response.sendFile(__dirname + '/../views/project/6f404e57-4407-4849-bec3-689ef714a206'));
 
 app.get("/callback", function(request, response) {
   var timeNow = moment();
