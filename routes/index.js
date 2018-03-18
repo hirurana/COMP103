@@ -107,9 +107,10 @@ app.get("/callback", function(request, response) {
               "name": body.full_name,
               "department": body.department,
               "token": token,
-              "auth_key": protectionKey
+              "auth_key": protectionKey,
+							"upi": body.upi
             }
-						console.log(user);
+						console.log(body);
             users.push(user);
             var userId = users.length - 1;
             var redirectUrl = util.format('/complete?id=%s&key=%s', userId, protectionKey);
