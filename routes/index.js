@@ -85,7 +85,7 @@ module.exports = function(app) {
 	// app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
 	app.get("/complete", function(request, response){
 		// TODO: change this to take the first project from db from user where upi is the id for the user
-		 response.redirect('project/6f404e57-4407-4849-bec3-689ef714a206');
+		 response.sendFile(__dirname + '/views/project/6f404e57-4407-4849-bec3-689ef714a206');
 	});
 
 	app.get("/callback", function(request, response) {
@@ -143,6 +143,7 @@ module.exports = function(app) {
 					"upi": users[request.params.id]["upi"]
 				}));
 			}
+			console.log(users);
 			else {
 				response.send(JSON.stringify(
 					{
