@@ -104,7 +104,7 @@ module.exports = function(app) {
 	  var id = getUrlParameter("id");
 	  var authKey = getUrlParameter("key");
 	  var url = '/userdata/' + id + '/' + authKey;
-	  $.getJSON(url, function(data) {
+	  getJSON(url, function(data) {
 	    if (data["ok"] == true) {
 	      var name = data["name"];
 				var upi = data["upi"]
