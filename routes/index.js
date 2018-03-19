@@ -86,7 +86,6 @@ module.exports = function(app) {
 	app.get("/complete", function(request, response){
 		// TODO: change this to take the first project from db from user where upi is the id for the user
 		// needs to use sendFile
-		alert(response);
 		 response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206');
 	});
 
@@ -122,7 +121,7 @@ module.exports = function(app) {
 							console.log(body);
 							users.push(user);
 							var userId = users.length - 1;
-							var redirectUrl = util.format('/complete?id=%s&key=%s', userId, protectionKey);
+							var redirectUrl = util.format('/userdata/%s/%s', userId, protectionKey);
 							response.redirect(redirectUrl);
 						});
 					});
@@ -144,7 +143,7 @@ module.exports = function(app) {
 					"department": users[request.params.id]["department"],
 					"upi": users[request.params.id]["upi"]
 				}));
-				// console.log(users);
+				response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206')
 			}else {
 				response.send(JSON.stringify(
 					{
