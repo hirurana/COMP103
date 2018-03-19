@@ -142,9 +142,8 @@ module.exports = function(app) {
 					"department": users[request.params.id]["department"],
 					"upi": users[request.params.id]["upi"]
 				}));
-			}
-			console.log(users);
-			else {
+				console.log(users);
+			}else {
 				response.send(JSON.stringify(
 					{
 						"ok": false
