@@ -86,6 +86,31 @@ module.exports = function(app) {
 	app.get("/complete", function(request, response){
 		// TODO: change this to take the first project from db from user where upi is the id for the user
 		// needs to use sendFile
+		var getUrlParameter = function getUrlParameter(sParam) {
+		  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		  sURLVariables = sPageURL.split('&'),
+		  sParameterName,
+		  i;
+
+		  for (i = 0; i < sURLVariables.length; i++) {
+		    sParameterName = sURLVariables[i].split('=');
+
+		    if (sParameterName[0] === sParam) {
+		      return sParameterName[1] === undefined ? true : sParameterName[1];
+		    }
+		  }
+		};
+
+	  var id = getUrlParameter("id");
+	  var authKey = getUrlParameter("key");
+	  var url = '/userdata/' + id + '/' + authKey;
+	  $.getJSON(url, function(data) {
+	    if (data["ok"] == true) {
+	      var name = data["name"];
+				var upi = data["upi"]
+		    }
+				console.log(data);
+		 });
 		 response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206');
 	});
 
@@ -121,7 +146,7 @@ module.exports = function(app) {
 							console.log(body);
 							users.push(user);
 							var userId = users.length - 1;
-							var redirectUrl = util.format('/userdata/%s/%s', userId, protectionKey);
+							var redirectUrl = util.format('/complete?id=%s&key=%s', userId, protectionKey);
 							response.redirect(redirectUrl);
 						});
 					});
@@ -143,7 +168,7 @@ module.exports = function(app) {
 					"department": users[request.params.id]["department"],
 					"upi": users[request.params.id]["upi"]
 				}));
-				response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206')
+				// console.log(users);
 			}else {
 				response.send(JSON.stringify(
 					{
