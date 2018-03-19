@@ -19,6 +19,7 @@
     "csurf": "^1.6.3",
     "express": "^4.13.2",
     "express-session": "^1.9.3",
+    "get-json": "^1.0.0",
     "helmet-csp": "^2.7.0",
     "is-root": "^1.0.0",
     "moment": "^2.21.0",

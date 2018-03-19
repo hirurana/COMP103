@@ -62,6 +62,7 @@ module.exports = function(app) {
 	var randomstring = require("randomstring");
 	// const util = require('util');
 	var moment = require('moment');
+	var getJSON = require('get-json');
 	const nodeRequest = require('request');
 	const util = require("util")
 
