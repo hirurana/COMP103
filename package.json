@@ -15,9 +15,11 @@
   "dependencies": {
     "body-parser": "^1.10.0",
     "browserify-middleware": "^8.1.0",
+    "content-security-policy": "^0.3.2",
     "csurf": "^1.6.3",
     "express": "^4.13.2",
     "express-session": "^1.9.3",
+    "helmet-csp": "^2.7.0",
     "is-root": "^1.0.0",
     "moment": "^2.21.0",
     "nunjucks": "^3.1.2",

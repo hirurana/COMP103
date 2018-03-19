@@ -3,13 +3,12 @@ var session = require("express-session")
 var browserify = require("browserify-middleware")
 
 var app = express()
-
 app.disable("x-powered-by")
 
 app.use(express.static(__dirname + "/public"))
 
 var sessionSettings = {
-	secret: "A very long secret. A MD5 hash would be great.",
+	secret: "9f8eed6c8608f8ee332f829d902e91f2",
 	resave: false,
 	saveUninitialized: false,
 	cookie: {
@@ -19,7 +18,6 @@ var sessionSettings = {
 
 if (app.get("env") === "production") {
 	app.set("trust proxy", 1)
-
 	sessionSettings.cookie.secure = true
 }
 

@@ -84,6 +84,7 @@ module.exports = function(app) {
 	// TODO: change this to take the first project from db
 	// app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
 	app.get("/complete", function(request, response){
+		// TODO: change this to take the first project from db from user where upi is the id for the user
 		 response.redirect('project/6f404e57-4407-4849-bec3-689ef714a206');
 	});
 
@@ -138,7 +139,8 @@ module.exports = function(app) {
 				{
 					"ok": true,
 					"name": users[request.params.id]["name"],
-					"department": users[request.params.id]["department"]
+					"department": users[request.params.id]["department"],
+					"upi": users[request.params.id]["upi"]
 				}));
 			}
 			else {
@@ -148,7 +150,7 @@ module.exports = function(app) {
 					}))
 				}
 			});
-			app.get("*", function(req, res) {
-				res.send("404 - Page not found")
-			})
+		app.get("*", function(req, res) {
+			res.send("404 - Page not found")
+		})
 	}
