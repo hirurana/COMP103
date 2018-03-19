@@ -183,7 +183,7 @@ $(document).ready(function() {
   var authKey = getUrlParameter("key");
   var url = '/userdata/' + id + '/' + authKey;
   $.getJSON(url, function(data) {
-    console.log(data);
+    console.log("hi");
     if (data["ok"] == true) {
       $('#full_name').html(data["name"]);
       $('#department').html(data["department"]);
