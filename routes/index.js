@@ -3,7 +3,7 @@ const path = require('path')
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		res.redirect("/project/6f404e57-4407-4849-bec3-689ef714a206")
+		res.redirect("/authorise")
 	})
 
 	app.get("/project/:projectID", function(req, res) {
