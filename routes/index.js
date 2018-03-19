@@ -86,7 +86,7 @@ module.exports = function(app) {
 	app.get("/complete", function(request, response){
 		// TODO: change this to take the first project from db from user where upi is the id for the user
 		// needs to use sendFile
-		console.log(response);
+		alert(response);
 		 response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206');
 	});
 
