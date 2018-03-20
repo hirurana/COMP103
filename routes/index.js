@@ -3,7 +3,8 @@ const path = require('path')
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		res.redirect("/authorise")
+		// res.redirect("/project/6f404e57-4407-4849-bec3-689ef714a206")
+		res.redirect('/authorise')
 	})
 
 	app.get("/project/:projectID", function(req, res) {
@@ -71,60 +72,24 @@ module.exports = function(app) {
 
 	var states = { };
 
-	var users = [];
-
-
-
 	//OAuth stuff
-	app.get("/authorise", function(request, response) {
+	app.get("/authorise", function(req, res) {
 		var state = randomstring.generate();
 		states[state] = moment();
 		var url = util.format('https://uclapi.com/oauth/authorise?client_id=%s&state=%s', client_id, state);
-		response.redirect(url);
-	});
-	// TODO: change this to take the first project from db
-	// app.get("/complete", (request, response) => response.sendFile(__dirname + '/views/project/:projectID.html'));
-	app.get("/complete", function(request, response){
-		// TODO: change this to take the first project from db from user where upi is the id for the user
-		// needs to use sendFile
-		var getUrlParameter = function getUrlParameter(sParam) {
-		  var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		  sURLVariables = sPageURL.split('&'),
-		  sParameterName,
-		  i;
-
-		  for (i = 0; i < sURLVariables.length; i++) {
-		    sParameterName = sURLVariables[i].split('=');
-
-		    if (sParameterName[0] === sParam) {
-		      return sParameterName[1] === undefined ? true : sParameterName[1];
-		    }
-		  }
-		};
-
-	  var id = getUrlParameter("id");
-	  var authKey = getUrlParameter("key");
-	  var url = '/userdata/' + id + '/' + authKey;
-	  getJSON(url, function(data) {
-	    if (data["ok"] == true) {
-	      var name = data["name"];
-				var upi = data["upi"]
-		    }
-				console.log(data);
-		 });
-		 response.redirect('/project/6f404e57-4407-4849-bec3-689ef714a206');
+		res.redirect(url);
 	});
 
-	app.get("/callback", function(request, response) {
+	app.get("/callback", function(req, res) {
 		var timeNow = moment();
-		if (request.query.state in states) {
-			if (moment(states[request.query.state]).add(300, 'seconds') > timeNow) {
-				if (request.query.result == "denied") {
-					var deniedText = `The login operation for state ${request.query.state} was denied`
-					response.send(deniedText);
+		if (req.query.state in states) {
+			if (moment(states[req.query.state]).add(300, 'seconds') > timeNow) {
+				if (req.query.result == "denied") {
+					var deniedText = `The login operation for state ${req.query.state} was denied`
+					res.send(deniedText);
 				} else {
 					// Successful login
-					var tokenUrl = util.format('https://uclapi.com/oauth/token?client_id=%s&client_secret=%s&code=%s', client_id, client_secret, request.query.code);
+					var tokenUrl = util.format('https://uclapi.com/oauth/token?client_id=%s&client_secret=%s&code=%s', client_id, client_secret, req.query.code);
 					console.log("Token URL: " + tokenUrl);
 					var token = "";
 					var name = "";
@@ -145,39 +110,17 @@ module.exports = function(app) {
 								"upi": body.upi
 							}
 							console.log(body);
-							users.push(user);
-							var userId = users.length - 1;
-							var redirectUrl = util.format('/complete?id=%s&key=%s', userId, protectionKey);
-							response.redirect(redirectUrl);
+							// TODO: add db shit
+
+							res.redirect(redirectUrl);
 						});
 					});
 				}
 			} else {
-				response.send("Authorisation took more than 5 minutes, so it has failed");
+				res.send("Authorisation took more than 5 minutes, so it has failed");
 			}
 		} else {
-			response.send("state does not exist");
+			res.send("state does not exist");
 		}
 	});
-
-	app.get("/userdata/:id/:key", function(request, response) {
-		if (users[request.params.id]["auth_key"] == request.params.key) {
-			response.send(JSON.stringify(
-				{
-					"ok": true,
-					"name": users[request.params.id]["name"],
-					"department": users[request.params.id]["department"],
-					"upi": users[request.params.id]["upi"]
-				}));
-				// console.log(users);
-			}else {
-				response.send(JSON.stringify(
-					{
-						"ok": false
-					}))
-				}
-			});
-		app.get("*", function(req, res) {
-			res.send("404 - Page not found")
-		})
 	}
