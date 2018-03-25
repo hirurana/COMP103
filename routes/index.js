@@ -14,6 +14,7 @@ module.exports = function(app) {
 	app.get("/", function(req, res) {
 		db.loadProjects(upi ,function (content) {
 			if (content != null) {
+				console.log(content);
 				res.redirect("https://www.youtube.com/watch?v=5IWxISz7vYk")
 			}
 		});
