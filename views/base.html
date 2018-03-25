@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0053)https://getbootstrap.com/docs/3.3/examples/dashboard/ -->
-<html lang="en" class="gr__getbootstrap_com">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en" class="gr__getbootstrap_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,13 +39,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/authorise">
-              <button class="navbar-brand btn btn-link"><span id="full_name"></span></button>
-            </a></li>
             <li>
               <form method="POST" action="/project/new">
-                <button class="navbar-brand btn btn-link" type="submit">Make a new project</button>
+                <button class="navbar-brand btn btn-link nav-btn" type="submit">New Project</button>
               </form>
+            </li>
+            <li>
+              <form method="POST" action="/project/delete">
+                <button class="navbar-brand btn btn-link nav-btn" type="submit">Delete Project</button>
+              </form>
+            </li>
+            <li>
+                <!-- TODO: change to users name -->
+                <a class="navbar-brand btn btn-link" role="button">{{project.approver}}</a>
             </li>
           </ul>
         </div>
@@ -60,7 +63,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             {% for project in projects %}
-            <li class="{% if project.id == currentProjectID %} active {% endif %}"><a href="/project/{{project.id}}">{{project.projectName}}</a></li>
+            <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}">{{project.projectName}}</a></li>
             {% endfor %}
           </ul>
           <ul class="nav nav-sidebar">
