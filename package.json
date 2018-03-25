@@ -20,6 +20,8 @@
     "express-session": "^1.9.3",
     "is-root": "^1.0.0",
     "moment": "^2.21.0",
+    "mongodb": "^3.0.5",
+    "nodemailer": "^4.6.3",
     "nunjucks": "^3.1.2",
     "randomstring": "^1.1.5",
     "request": "^2.85.0",
