@@ -63,7 +63,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             {% for project in projects %}
-            <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}">{{project.projectName}}</a></li>
+            <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}">{{project.data.projectName}}</a></li>
             {% endfor %}
           </ul>
           <ul class="nav nav-sidebar">
@@ -71,9 +71,9 @@
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          {% block content %}
+          <!-- {% block content %}
           {% endblock %}
-          {% include "form.html" %}
+          {% include "form.html" %} -->
         </div>
       </div>
     </div>
