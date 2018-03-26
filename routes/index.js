@@ -146,7 +146,7 @@ module.exports = function(app) {
 							db.loadProjects(body.upi, function (projects) {
 								res.render("project.html", {
 									projects,
-									currentProjectID: projects[0]._id;
+									currentProjectID: projects[0]._id
 								});
 							});
 							// response.redirect("https://www.youtube.com/watch?v=rdeQT7KkqM8");
