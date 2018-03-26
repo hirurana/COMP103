@@ -32,7 +32,7 @@ module.exports = function(app) {
 		// 	project,
 		// 	currentProjectID: req.params.projectID
 		// })
-	});
+	// });
 
 	app.post("/project/:projectID/save", function(req, res) {
 		db.editProject(req.params.projectID, {
