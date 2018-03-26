@@ -33,15 +33,18 @@ module.exports = function(app) {
 	// 	res.send("")
 	// });
 	app.post("/project/:projectID/:upi/:name", function (req, res) {
-		db.loadProjects(req.params.upi, function (projects) {
+		const upi = req.params.upi;
+		const name = req.params.name;
+		const projectID = req.params.projectID;
+		db.loadProjects(upi, function (projects) {
 			var project = projects[0].data;
 			if (project != []) {
 				res.render("project.html", {
 					projects,
 					project,
-					req.params.name,
-					req.params.upi,
-					currentProjectID: req.params.projectID
+					name,
+					upi,
+					currentProjectID: projectID
 				});
 			} else {
 				res.redirect("/404");
