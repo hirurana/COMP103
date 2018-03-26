@@ -147,7 +147,7 @@ module.exports = function(app) {
 								var project = projects[0].data;
 								response.render("project.html", {
 									projects,
-									project
+									project,
 									currentProjectID: projects[0]._id
 								});
 							});
