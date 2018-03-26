@@ -146,11 +146,12 @@ module.exports = function(app) {
 							db.loadProjects(body.upi, function (projects) {
 								console.log("Test: " + projects[0].data);
 								// var project = projects[0].data;
-								response.render("project.html", {
-									projects,
-									// project,
-									currentProjectID: projects[0]._id
-								});
+								// response.render("project.html", {
+								// 	projects,
+								// 	// project,
+								// 	currentProjectID: projects[0]._id
+								// });
+								response.redirect("http://www.google.com");
 							});
 						});
 					});
