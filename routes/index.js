@@ -18,9 +18,8 @@ var name = '';
 
 module.exports = function(app) {
 	app.get("/", function(req, res) {
-		// res.redirect("/project/6f404e57-4407-4849-bec3-689ef714a206")
 		res.redirect('/authorise');
-	})
+	});
 
 	// TODO: get projects from upi
 	// app.get("/", function(req, res) {
@@ -143,11 +142,12 @@ module.exports = function(app) {
 							// 	project,
 							// 	currentProjectID: req.params.projectID
 							// })
-							db.loadProjects(body.upi, function (projects) {
+							db.loadProjects(upi, function (projects) {
 								var project = projects[0].data;
 								response.render("project.html", {
 									projects,
 									project,
+									name,
 									currentProjectID: projects[0]._id
 								});
 							});

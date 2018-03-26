@@ -45,9 +45,12 @@
               </form>
             </li>
             <li>
-              <form method="POST" action="/project/delete">
+              <form method="POST" action="/project/{{project._id}}/delete">
                 <button class="navbar-brand btn btn-link nav-btn" type="submit">Delete Project</button>
               </form>
+            </li>
+            <li>
+              <button class="navbar-brand btn btn-link nav-btn">{{name}}</button>
             </li>
             <li>
                 <!-- TODO: change to users name -->
@@ -66,9 +69,9 @@
             <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}">{{project.data.projectName}}</a></li>
             {% endfor %}
           </ul>
-          <ul class="nav nav-sidebar">
+          <!-- <ul class="nav nav-sidebar">
             <li><a href="#">Approved video #1</a></li>
-          </ul>
+          </ul> -->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {% block content %}
