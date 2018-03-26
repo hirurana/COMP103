@@ -101,13 +101,13 @@ module.exports = function(app) {
 		res.redirect(url);
 	});
 
-	app.get("/callback", function(req, res) {
+	app.get("/callback", function(req, response) {
 		var timeNow = moment();
 		if (req.query.state in states) {
 			if (moment(states[req.query.state]).add(300, 'seconds') > timeNow) {
 				if (req.query.result == "denied") {
 					var deniedText = `The login operation for state ${req.query.state} was denied`
-					res.send(deniedText);
+					response.send(deniedText);
 				} else {
 					// Successful login
 					var tokenUrl = util.format('https://uclapi.com/oauth/token?client_id=%s&client_secret=%s&code=%s', client_id, client_secret, req.query.code);
@@ -149,15 +149,15 @@ module.exports = function(app) {
 							//
 							// 	});
 							// });
-							res.redirect("https://www.youtube.com/watch?v=rdeQT7KkqM8");
+							response.redirect("https://www.youtube.com/watch?v=rdeQT7KkqM8");
 						});
 					});
 				}
 			} else {
-				res.send("Authorisation took more than 5 minutes, so it has failed");
+				response.send("Authorisation took more than 5 minutes, so it has failed");
 			}
 		} else {
-			res.send("state does not exist");
+			response.send("state does not exist");
 		}
 	});
 }
