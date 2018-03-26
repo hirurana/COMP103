@@ -39,7 +39,7 @@ module.exports = function(app) {
 		console.log(name);
 		db.loadProjects(upi, function (projects) {
 			var project = projects[0].data;
-			if (project != []) {
+			if (project != null) {
 				res.render("project.html", {
 					projects,
 					project,
