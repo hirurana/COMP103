@@ -46,19 +46,19 @@ module.exports = function(app) {
 		// })
 	// });
 
-	app.post("/project/:projectID/save", function(req, res) {
-		db.saveProject(req.params.projectID, {
-			projectName: req.body.projectName,
-			projectManager: req.body.projectManager,
-			managerNum: req.body.managerNum,
-			email: req.body.email,
-			teamMembers: req.body.teamMembers,
-			budget: req.body.budget,
-			approver: req.body.approver,
-			videoURL: req.body.videoURL
-		});
-		res.send("")
-	});
+	// app.post("/project/:projectID/save", function(req, res) {
+	// 	db.saveProject(req.params.projectID, {
+	// 		projectName: req.body.projectName,
+	// 		projectManager: req.body.projectManager,
+	// 		managerNum: req.body.managerNum,
+	// 		email: req.body.email,
+	// 		teamMembers: req.body.teamMembers,
+	// 		budget: req.body.budget,
+	// 		approver: req.body.approver,
+	// 		videoURL: req.body.videoURL
+	// 	});
+	// 	res.send("")
+	// });
 
 	// TODO: create new project inside MongoDB
 	app.post("/project/new", function(req, res) {
@@ -144,10 +144,11 @@ module.exports = function(app) {
 							// 	currentProjectID: req.params.projectID
 							// })
 							db.loadProjects(body.upi, function (projects) {
-								var project = projects[0].data;
+								console.log("Test: " + projects[0].data);
+								// var project = projects[0].data;
 								response.render("project.html", {
 									projects,
-									project,
+									// project,
 									currentProjectID: projects[0]._id
 								});
 							});
