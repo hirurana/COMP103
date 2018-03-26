@@ -36,6 +36,7 @@ module.exports = function(app) {
 		const upi = req.params.upi;
 		const name = req.params.name;
 		const projectID = req.params.projectID;
+		console.log(name);
 		db.loadProjects(upi, function (projects) {
 			var project = projects[0].data;
 			if (project != []) {
