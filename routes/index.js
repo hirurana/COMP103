@@ -1,6 +1,15 @@
+// init project
 const db = require("../lib/db")
 const path = require('path')
-const randomstring = require("randomstring");
+var randomstring = require("randomstring");
+var moment = require('moment');
+const nodeRequest = require('request');
+const util = require("util")
+
+const client_id = "2824966001992944.0374225578827717"
+const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
+
+var states = { };
 
 // TODO: add to user name and upi
 // var upi = "hrana90";
@@ -83,18 +92,6 @@ module.exports = function(app) {
 
 	// server.js
 	// where your node app starts
-
-	// init project
-	// var randomstring = require("randomstring");
-	// // const util = require('util');
-	// var moment = require('moment');
-	// const nodeRequest = require('request');
-	// const util = require("util")
-	//
-	// const client_id = "2824966001992944.0374225578827717"
-	// const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
-	//
-	// var states = { };
 
 	// //OAuth stuff
 	app.get("/authorise", function(req, res) {
