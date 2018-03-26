@@ -144,7 +144,7 @@ module.exports = function(app) {
 							// 	currentProjectID: req.params.projectID
 							// })
 							db.loadProjects(body.upi, function (projects) {
-								res.render("project.html", {
+								response.render("project.html", {
 									projects,
 									currentProjectID: projects[0]._id
 								});
