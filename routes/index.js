@@ -21,30 +21,6 @@ module.exports = function(app) {
 		res.redirect('/authorise');
 	});
 
-	// TODO: get projects from upi
-	// app.get("/", function(req, res) {
-	// 	db.loadProjects(upi ,function (projects) {
-	// 		if (projects != null) {
-	// 			console.log(projects);
-	// 			// TODO: get a specific project and store json in a variable
-	// 			res.redirect("https://www.youtube.com/watch?v=5IWxISz7vYk")
-	// 		}
-	// 	});
-
-
-
-		// const projects = db.getProjects()
-		// const project = db.getProject(req.params.projectID)
-		// if (project == null) {
-		// 	res.redirect("/404")
-		// }
-		// res.render("project.html", {
-		// 	projects,
-		// 	project,
-		// 	currentProjectID: req.params.projectID
-		// })
-	// });
-
 	// app.post("/project/:projectID/save", function(req, res) {
 	// 	db.saveProject(req.params.projectID, {
 	// 		projectName: req.body.projectName,
