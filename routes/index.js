@@ -144,12 +144,13 @@ module.exports = function(app) {
 							// 	currentProjectID: req.params.projectID
 							// })
 							db.loadProjects(body.upi, function (projects) {
+								var project = projects[0].data;
 								response.render("project.html", {
 									projects,
+									project
 									currentProjectID: projects[0]._id
 								});
 							});
-							// response.redirect("https://www.youtube.com/watch?v=rdeQT7KkqM8");
 						});
 					});
 				}
