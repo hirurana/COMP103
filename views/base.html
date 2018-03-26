@@ -35,26 +35,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://getbootstrap.com/docs/3.3/examples/dashboard/#">UCL Video Guidelines</a>
+          <a class="navbar-brand" href="http://www.uclengvid.azurewebsites.net/">UCL Video Guidelines</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <form method="POST" action="/project/new">
+              <form method="POST" action="/project/{{upi}}/{{name}}/new">
                 <button class="navbar-brand btn btn-link nav-btn" type="submit">New Project</button>
               </form>
             </li>
             <li>
-              <form method="POST" action="/project/{{project._id}}/delete">
+              <form method="POST" action="/project/{{project._id}}/{{upi}}/{{name}}/delete">
                 <button class="navbar-brand btn btn-link nav-btn confirm" type="submit">Delete Project</button>
               </form>
             </li>
             <li>
               <button class="navbar-brand btn btn-link nav-btn">{{name}}</button>
-            </li>
-            <li>
-                <!-- TODO: change to users name -->
-                <a class="navbar-brand btn btn-link" role="button">{{project.approver}}</a>
             </li>
           </ul>
         </div>
@@ -66,12 +62,9 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             {% for project in projects %}
-            <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}">{{project.data.projectName}}</a></li>
+            <li class="{% if project._id == currentProjectID %} active {% endif %}"><a href="/project/{{project._id}}/{{upi}}/{{name}}">{{project.data.projectName}}</a></li>
             {% endfor %}
           </ul>
-          <!-- <ul class="nav nav-sidebar">
-            <li><a href="#">Approved video #1</a></li>
-          </ul> -->
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           {% block content %}

@@ -10,8 +10,6 @@ const client_id = "2824966001992944.0374225578827717"
 const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
 
 var states = { };
-var upi = '';
-var name = '';
 
 // TODO: add to user name and upi
 // var upi = "hrana90";
@@ -34,18 +32,46 @@ module.exports = function(app) {
 	// 	});
 	// 	res.send("")
 	// });
-
-	// TODO: create new project inside MongoDB
-	app.post("/project/new", function(req, res) {
-		const projectID = db.createProject("Untitled 1")
-		res.redirect(`/project/${projectID}`)
+	app.post("/project/:projectID/:upi/:name", function (req, res) {
+		db.loadProjects(req.params.upi, function (projects) {
+			var project = projects[0].data;
+			if (project != []) {
+				res.render("project.html", {
+					projects,
+					project,
+					req.params.name,
+					req.params.upi,
+					currentProjectID: req.params.projectID
+				});
+			} else {
+				res.redirect("/404");
+			}
+		});
 	})
 
-	// TODO: create a delete function in db
-	app.post("/project/:projectID/delete", function(req, res) {
-		const projectID = db.createProject("Untitled 1")
-		res.redirect(`/project/${projectID}`)
-	})
+	app.post("/project/:upi/:name/new", function(req, res) {
+		const projectID = db.createProject(req.params.upi)
+		const upi = req.params.upi;
+		const name = req.params.name;
+		res.redirect(`/project/${projectID}/${upi}/${name}`)
+	});
+
+	app.post("/project/:projectID/:upi/:name/delete", function(req, res) {
+		const projectID = req.params.projectID;
+		const upi = req.params.upi;
+		const name = req.params.name;
+		db.deleteProject(upi, projectID);
+		db.loadProjects(upi, function (projects) {
+			var project = projects[0].data;
+			response.render("project.html", {
+				projects,
+				project,
+				name,
+				upi,
+				currentProjectID: projects[0]._id
+			});
+		});
+	});
 
 	app.get('/download/templates', function(req, res){
 		var file = __dirname + '/../public/res/Templates.zip';
@@ -95,8 +121,8 @@ module.exports = function(app) {
 						var userDataUrl = util.format('https://uclapi.com/oauth/user/data?client_secret=%s&token=%s', client_secret, token);
 						nodeRequest(userDataUrl, {json: true}, (err, res, body) => {
 							if (err) { return console.log(err); }
-							name = body.full_name;
-							upi = body.upi;
+							var name = body.full_name;
+							var upi = body.upi;
 							var protectionKey = randomstring.generate();
 							var user = {
 								"name": body.full_name,
@@ -118,12 +144,13 @@ module.exports = function(app) {
 							// 	project,
 							// 	currentProjectID: req.params.projectID
 							// })
-							db.loadProjects(upi, function (projects) {
+							db.loadProjects(body.upi, function (projects) {
 								var project = projects[0].data;
 								response.render("project.html", {
 									projects,
 									project,
 									name,
+									upi,
 									currentProjectID: projects[0]._id
 								});
 							});
