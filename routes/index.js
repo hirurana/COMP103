@@ -10,6 +10,8 @@ const client_id = "2824966001992944.0374225578827717"
 const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
 
 var states = { };
+var upi = '';
+var name = '';
 
 // TODO: add to user name and upi
 // var upi = "hrana90";
@@ -45,7 +47,7 @@ module.exports = function(app) {
 	// });
 
 	app.post("/project/:projectID/save", function(req, res) {
-		db.editProject(req.params.projectID, {
+		db.saveProject(req.params.projectID, {
 			projectName: req.body.projectName,
 			projectManager: req.body.projectManager,
 			managerNum: req.body.managerNum,
@@ -54,9 +56,9 @@ module.exports = function(app) {
 			budget: req.body.budget,
 			approver: req.body.approver,
 			videoURL: req.body.videoURL
-		})
+		});
 		res.send("")
-	})
+	});
 
 	// TODO: create new project inside MongoDB
 	app.post("/project/new", function(req, res) {
@@ -65,7 +67,7 @@ module.exports = function(app) {
 	})
 
 	// TODO: create a delete function in db
-	app.post("/project/delete", function(req, res) {
+	app.post("/project/:projectID/delete", function(req, res) {
 		const projectID = db.createProject("Untitled 1")
 		res.redirect(`/project/${projectID}`)
 	})
@@ -90,8 +92,6 @@ module.exports = function(app) {
 		// TODO: redirect user to complete page
 	});
 
-	// server.js
-	// where your node app starts
 
 	// //OAuth stuff
 	app.get("/authorise", function(req, res) {
@@ -113,15 +113,15 @@ module.exports = function(app) {
 					var tokenUrl = util.format('https://uclapi.com/oauth/token?client_id=%s&client_secret=%s&code=%s', client_id, client_secret, req.query.code);
 					console.log("Token URL: " + tokenUrl);
 					var token = "";
-					var name = "";
 					nodeRequest(tokenUrl, { json: true }, (err, res, body) => {
 						if (err) { return console.log(err); }
 						token = body.token;
-						console.log("Got token: " + token);
+						// console.log("Got token: " + token);
 						var userDataUrl = util.format('https://uclapi.com/oauth/user/data?client_secret=%s&token=%s', client_secret, token);
 						nodeRequest(userDataUrl, {json: true}, (err, res, body) => {
 							if (err) { return console.log(err); }
 							name = body.full_name;
+							upi = body.upi;
 							var protectionKey = randomstring.generate();
 							var user = {
 								"name": body.full_name,
