@@ -33,10 +33,11 @@ module.exports = function(app) {
 	// 	res.send("")
 	// });
 	app.post("/project/:projectID/:upi/:name", function (req, res) {
-		const upi = req.params.upi;
-		const name = req.params.name;
-		const projectID = req.params.projectID;
-		console.log(name);
+		var upi = req.params.upi;
+		var name = req.params.name;
+		var projectID = req.params.projectID;
+		console.log("name: "+ name);
+		console.log("upi: " + upi);
 		db.loadProjects(upi, function (projects) {
 			var project = projects[0].data;
 			if (project != null) {
@@ -53,11 +54,13 @@ module.exports = function(app) {
 		});
 	})
 
+// TODO: keeps adding name as _id instead of upi?
 	app.post("/project/:upi/:name/new", function(req, res) {
-		console.log("test: " + req.params.upi);
-		const projectID = db.createProject(req.params.upi)
-		const upi = req.params.upi;
-		const name = req.params.name;
+		var upi = req.params.upi;
+		console.log("test: " + upi);
+		var name = req.params.name;
+		var projectID = db.createProject(upi);
+
 		res.redirect(`/project/${projectID}/${upi}/${name}`)
 	});
 
@@ -134,7 +137,7 @@ module.exports = function(app) {
 								"department": body.department,
 								"token": token,
 								"auth_key": protectionKey,
-								"upi": body.upi
+								"upi": upi
 							}
 							console.log(body);
 							// TODO: add db stuff upi can only be accessed here
