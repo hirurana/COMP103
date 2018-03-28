@@ -54,6 +54,7 @@ module.exports = function(app) {
 	})
 
 	app.post("/project/:upi/:name/new", function(req, res) {
+		console.log("test: " + req.params.upi);
 		const projectID = db.createProject(req.params.upi)
 		const upi = req.params.upi;
 		const name = req.params.name;
