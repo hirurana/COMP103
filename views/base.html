@@ -40,12 +40,12 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <form method="POST" action="/project/{{upi}}/{{name}}/new">
-                <button class="navbar-brand btn btn-link nav-btn" type="submit">New Project{{upi}}</button>
+              <form method="POST" action="/new/{{upi}}/{{name}}">
+                <button class="navbar-brand btn btn-link nav-btn" type="submit">New Project</button>
               </form>
             </li>
             <li>
-              <form method="POST" action="/project/{{project._id}}/{{upi}}/{{name}}/delete">
+              <form method="POST" action="/delete/{{project._id}}/{{upi}}/{{name}}">
                 <button class="navbar-brand btn btn-link nav-btn confirm" type="submit">Delete Project</button>
               </form>
             </li>

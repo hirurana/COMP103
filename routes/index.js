@@ -11,9 +11,6 @@ const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3
 
 var states = { };
 
-// TODO: add to user name and upi
-// var upi = "hrana90";
-
 module.exports = function(app) {
 	app.get("/", function(req, res) {
 		res.redirect('/authorise');
@@ -36,10 +33,14 @@ module.exports = function(app) {
 		var upi = req.params.upi;
 		var name = req.params.name;
 		var projectID = req.params.projectID;
-		console.log("name: "+ name);
-		console.log("upi: " + upi);
 		db.loadProjects(upi, function (projects) {
-			var project = projects[0].data;
+			var project = null;
+
+			for (i in projects) {
+				if (projects[i]._id == projectID) {
+					project = projects[i].data;
+				}
+			}
 			if (project != null) {
 				res.render("project.html", {
 					projects,
@@ -49,13 +50,13 @@ module.exports = function(app) {
 					currentProjectID: projectID
 				});
 			} else {
-				res.redirect("/404");
+				res.redirect("http://www.google.com");
 			}
 		});
 	})
 
 // TODO: keeps adding name as _id instead of upi?
-	app.post("/project/:upi/:name/new", function(req, res) {
+	app.post("/new/:upi/:name", function(req, res) {
 		var upi = req.params.upi;
 		console.log("test: " + upi);
 		var name = req.params.name;
@@ -64,7 +65,7 @@ module.exports = function(app) {
 		res.redirect(`/project/${projectID}/${upi}/${name}`)
 	});
 
-	app.post("/project/:projectID/:upi/:name/delete", function(req, res) {
+	app.post("/delete/:projectID/:upi/:name", function(req, res) {
 		const projectID = req.params.projectID;
 		const upi = req.params.upi;
 		const name = req.params.name;
