@@ -29,6 +29,7 @@ module.exports = function(app) {
 	// 	});
 	// 	res.send("")
 	// });
+	// WARNING: this doesn't work even with the correct values passed as params
 	app.post("/project/:projectID/:upi/:name", function (req, res) {
 		var upi = req.params.upi;
 		var name = req.params.name;
@@ -65,6 +66,8 @@ module.exports = function(app) {
 		res.redirect(`/project/${projectID}/${upi}/${name}`)
 	});
 
+	// WARNING: this doesn't work even with the correct values passed as params
+	// TODO: Need to reload the first project associated with the upi after deleting a project
 	app.post("/delete/:projectID/:upi/:name", function(req, res) {
 		const projectID = req.params.projectID;
 		const upi = req.params.upi;
@@ -82,6 +85,7 @@ module.exports = function(app) {
 		});
 	});
 
+	// works fine
 	app.get('/download/templates', function(req, res){
 		var file = __dirname + '/../public/res/Templates.zip';
 		res.download(file);
@@ -103,7 +107,7 @@ module.exports = function(app) {
 	});
 
 
-	// //OAuth stuff
+	// //OAuth stuff works fine
 	app.get("/authorise", function(req, res) {
 		var state = randomstring.generate();
 		states[state] = moment();
