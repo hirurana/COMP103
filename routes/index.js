@@ -29,7 +29,6 @@ module.exports = function(app) {
 	// 	});
 	// 	res.send("")
 	// });
-	// WARNING: this doesn't work even with the correct values passed as params
 	app.get("/project/:projectID/:upi/:name", function (req, res) {
 		var upi = req.params.upi;
 		var name = req.params.name;
@@ -37,7 +36,7 @@ module.exports = function(app) {
 		db.loadProjects(upi, function (projects) {
 			var project = null;
 
-			for (i in projects) {
+			for (let i = 0; i < projects.length; i++) {
 				if (projects[i]._id == projectID) {
 					project = projects[i].data;
 				}
