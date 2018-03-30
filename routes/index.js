@@ -30,7 +30,7 @@ module.exports = function(app) {
 	// 	res.send("")
 	// });
 	// WARNING: this doesn't work even with the correct values passed as params
-	app.post("/project/:projectID/:upi/:name", function (req, res) {
+	app.get("/project/:projectID/:upi/:name", function (req, res) {
 		var upi = req.params.upi;
 		var name = req.params.name;
 		var projectID = req.params.projectID;
