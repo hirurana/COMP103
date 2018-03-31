@@ -35,7 +35,7 @@ module.exports = function(app) {
 		var projectID = req.params.projectID;
 		db.loadProjects(upi, function (projects) {
 			var project = null;
-
+			projects = projects.sort()
 			for (let i = 0; i < projects.length; i++) {
 				if (projects[i]._id == projectID) {
 					project = projects[i].data;
@@ -50,7 +50,7 @@ module.exports = function(app) {
 					currentProjectID: projectID
 				});
 			} else {
-				res.redirect("http://www.google.com");
+				res.redirect("/404");
 			}
 		});
 	})
@@ -74,7 +74,7 @@ module.exports = function(app) {
 		db.deleteProject(upi, projectID);
 		db.loadProjects(upi, function (projects) {
 			var project = projects[0].data;
-			response.render("project.html", {
+			res.render("project.html", {
 				projects,
 				project,
 				name,
