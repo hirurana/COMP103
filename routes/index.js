@@ -60,9 +60,10 @@ module.exports = function(app) {
 		var upi = req.params.upi;
 		console.log("test: " + upi);
 		var name = req.params.name;
-		var projectID = db.createProject(upi);
-
-		res.redirect(`/project/${projectID}/${upi}/${name}`)
+		var projectID = uuid();
+		db.createProject(upi, projectID, function() {
+			res.redirect(`/project/${projectID}/${upi}/${name}`);
+		});
 	});
 
 	// WARNING: this doesn't work even with the correct values passed as params
@@ -175,5 +176,9 @@ module.exports = function(app) {
 		} else {
 			response.send("state does not exist");
 		}
+	});
+
+	app.get("*", function (req, res) {
+			res.send("Not Found");
 	});
 }
