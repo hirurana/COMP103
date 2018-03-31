@@ -74,14 +74,8 @@ module.exports = function(app) {
 		const name = req.params.name;
 		db.deleteProject(upi, projectID);
 		db.loadProjects(upi, function (projects) {
-			var project = projects[0].data;
-			res.render("project.html", {
-				projects,
-				project,
-				name,
-				upi,
-				currentProjectID: projects[0]._id
-			});
+			var projectID = projects[0]._id;
+			res.redirect(`/project/${projectID}/${upi}/${name}`)
 		});
 	});
 
@@ -145,7 +139,22 @@ module.exports = function(app) {
 								"upi": upi
 							}
 							console.log(body);
-							response.redirect(`/project/${projectID}/${upi}/${name}`);
+							// TODO: add db stuff upi can only be accessed here
+							// db.checkUser(body.upi)
+							// const projects = db.getProjects()
+							// const project = db.getProject(req.params.projectID)
+							// if (project == null) {
+							// 	res.redirect("/404")
+							// }
+							// res.render("project.html", {
+							// 	projects,
+							// 	project,
+							// 	currentProjectID: req.params.projectID
+							// })
+							db.loadProjects(body.upi, function (projects) {
+								var projectID = project[0]._id;
+								res.redirect(`/project/${projectID}/${upi}/${name}`)
+							});
 						});
 					});
 				}
