@@ -152,7 +152,7 @@ module.exports = function(app) {
 							// 	currentProjectID: req.params.projectID
 							// })
 							db.loadProjects(body.upi, function (projects) {
-								var projectID = project[0]._id;
+								var projectID = projects[0]._id;
 								res.redirect(`/project/${projectID}/${upi}/${name}`)
 							});
 						});
