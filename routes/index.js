@@ -112,7 +112,7 @@ module.exports = function(app) {
 			checkboxData: {},
 			videoURL: req.body.videoURL
 		});
-
+		res.send("");
 	})
 
 	// //OAuth stuff works fine
