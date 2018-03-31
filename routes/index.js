@@ -145,28 +145,7 @@ module.exports = function(app) {
 								"upi": upi
 							}
 							console.log(body);
-							// TODO: add db stuff upi can only be accessed here
-							// db.checkUser(body.upi)
-							// const projects = db.getProjects()
-							// const project = db.getProject(req.params.projectID)
-							// if (project == null) {
-							// 	res.redirect("/404")
-							// }
-							// res.render("project.html", {
-							// 	projects,
-							// 	project,
-							// 	currentProjectID: req.params.projectID
-							// })
-							db.loadProjects(body.upi, function (projects) {
-								var project = projects[0].data;
-								response.render("project.html", {
-									projects,
-									project,
-									name,
-									upi,
-									currentProjectID: projects[0]._id
-								});
-							});
+							response.redirect(`/project/${projectID}/${upi}/${name}`);
 						});
 					});
 				}
