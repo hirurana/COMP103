@@ -153,7 +153,7 @@ module.exports = function(app) {
 							// })
 							db.loadProjects(body.upi, function (projects) {
 								var projectID = projects[0]._id;
-								res.redirect(`/project/${projectID}/${upi}/${name}`)
+								response.redirect(`/project/${projectID}/${upi}/${name}`)
 							});
 						});
 					});
