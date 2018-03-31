@@ -1,13 +1,20 @@
 function ajaxSubmitForm() {
-  var checkedItems = {}
+  var checkedItems = {
+    subtitles: false,
+    animate: false,
+    cma: false,
+    credits: false,
+    music: false,
+    fonts: false,
+    releaseForms: false,
+    necessarySteps: false,
+    accurateInfo: false
+  }
   $('#get-checked-data').on('click', function(event) {
       event.preventDefault();
-      var counter = 0;
       $("#check-list-box li.active").each(function(idx, li) {
-          checkedItems[counter] = $(li).text();
-          counter++;
-      });
-      $('#display-json').html(JSON.stringify(checkedItems, null, '\t'));
+          checkedItems[$(li).name()] = true;
+      })
   });
 
 
