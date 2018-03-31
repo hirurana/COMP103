@@ -100,7 +100,7 @@ module.exports = function(app) {
 		// TODO: redirect user to complete page
 	});
 
-	app.post("/save/:projectID/:upi", function (req, res) {
+	app.post("/save/:projectID", function (req, res) {
 		db.saveProject(req.params.projectID, {
 			projectName: req.body.projectName,
 			projectManager: req.body.projectManager,
