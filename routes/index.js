@@ -100,6 +100,20 @@ module.exports = function(app) {
 		// TODO: redirect user to complete page
 	});
 
+	app.post("/save/:projectID/:upi", function (req, res) {
+		db.saveProject(req.params.projectID, {
+			projectName: req.body.projectName,
+			projectManager: req.body.projectManager,
+			managerNum: req.body.managerNum,
+			email: req.body.email,
+			teamMembers: req.body.teamMembers,
+			budget: req.body.budget,
+			approverEmail: req.body.approverEmail,
+			checkboxData: {},
+			videoURL: req.body.videoURL
+		});
+
+	})
 
 	// //OAuth stuff works fine
 	app.get("/authorise", function(req, res) {
@@ -139,18 +153,6 @@ module.exports = function(app) {
 								"upi": upi
 							}
 							console.log(body);
-							// TODO: add db stuff upi can only be accessed here
-							// db.checkUser(body.upi)
-							// const projects = db.getProjects()
-							// const project = db.getProject(req.params.projectID)
-							// if (project == null) {
-							// 	res.redirect("/404")
-							// }
-							// res.render("project.html", {
-							// 	projects,
-							// 	project,
-							// 	currentProjectID: req.params.projectID
-							// })
 							db.loadProjects(body.upi, function (projects) {
 								var projectID = projects[0]._id;
 								response.redirect(`/project/${projectID}/${upi}/${name}`)
