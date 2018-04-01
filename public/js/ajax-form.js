@@ -20,6 +20,8 @@ function updateCheckedItems() {
   $("#check-list-box2 li").each(fn)
 }
 
+updateCheckedItems()
+
 $('#check-list-box').on('click', function(event) {
   updateCheckedItems()
 });
