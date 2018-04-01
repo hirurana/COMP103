@@ -102,7 +102,7 @@ module.exports = function(app) {
 
 	app.post("/save/:projectID", function (req, res) {
 		console.log("---------------------")
-		console.log(req.body)
+		console.log(JSON.parse(Object.keys(req.body)[0]))
 		console.log("---------------------")
 		db.saveProject(req.params.projectID, {
 			projectName: req.body.projectName,
