@@ -5,6 +5,7 @@ var randomstring = require("randomstring");
 var moment = require('moment');
 const nodeRequest = require('request');
 const util = require("util")
+const uuid = require('uuid/v4');
 
 const client_id = "2824966001992944.0374225578827717"
 const client_secret = "3ef5baff0b02b61666106e29eea06b1797403074c63313f470cb9a3a3e5b2c33"
@@ -101,20 +102,7 @@ module.exports = function(app) {
 	});
 
 	app.post("/save/:projectID", function (req, res) {
-		console.log("---------------------")
-		console.log(JSON.parse(Object.keys(req.body)[0]))
-		console.log("---------------------")
-		db.saveProject(req.params.projectID, {
-			projectName: req.body.projectName,
-			projectManager: req.body.projectManager,
-			managerNum: req.body.managerNum,
-			email: req.body.email,
-			teamMembers: req.body.teamMembers,
-			budget: req.body.budget,
-			approverEmail: req.body.approverEmail,
-			checkboxData: {},
-			videoURL: req.body.videoURL
-		});
+		db.saveProject(req.params.projectID, JSON.parse(Object.keys(req.body)[0]));
 		res.send("");
 	})
 
