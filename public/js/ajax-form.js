@@ -13,6 +13,7 @@ function ajaxSubmitForm() {
   $('#get-checked-data').on('click', function(event) {
       event.preventDefault();
       $("#check-list-box li.active").each(function(idx, li) {
+          debugger
           checkedItems[$(li).name()] = true;
       })
   });
