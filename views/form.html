@@ -41,8 +41,9 @@
         <h3 class="fs-subtitle">Have you done the following?</h3>
         <div class="well">
           <ul id="check-list-box" class="list-group checked-list-box">
-            <li name="subtitles" class="list-group-item active">Subtitles</li>
-            <li name="animate" class="list-group-item {% if project.checkedItems.animate %} active {% endif %}">Anitmated UCL ident on front and end of video</li>
+            <!-- TODO: SORT THIS SHIT OUT -->
+            <li name="subtitles" class="list-group-item active" >Subtitles</li>
+            <li name="animate" class="list-group-item {% if project.checkedItems.animate %} active {% endif %}" data-checked="true">Anitmated UCL ident on front and end of video</li>
             <li name="cma" class="list-group-item {% if project.checkedItems.cma %} active {% endif %}">CMA Disclaimer</li>
             <li name="credits" class="list-group-item {% if project.checkedItems.credits %} active {% endif %}">Accurate credits</li>
             <li name="music" class="list-group-item {% if project.checkedItems.music %} active {% endif %}">Accurately copyrighted music</li>
