@@ -41,16 +41,15 @@
         <h3 class="fs-subtitle">Have you done the following?</h3>
         <div class="well">
           <ul id="check-list-box" class="list-group checked-list-box">
-            <li name="subtitles" class="list-group-item {% if project.checkboxItems.subtitles %} active {% endif %}">Subtitles</li>
-            <li name="animate" class="list-group-item {% if project.checkboxItems.animate %} active {% endif %}">Anitmated UCL ident on front and end of video</li>
-            <li name="cma" class="list-group-item {% if project.checkboxItems.cma %} active {% endif %}">CMA Disclaimer</li>
-            <li name="credits" class="list-group-item {% if project.checkboxItems.credits %} active {% endif %}">Accurate credits</li>
-            <li name="music" class="list-group-item {% if project.checkboxItems.music %} active {% endif %}">Accurately copyrighted music</li>
-            <li name="fonts" class="list-group-item {% if project.checkboxItems.fonts %} active {% endif %}">UCL fonts used in GFX</li>
-            <li name="releaseForms" class="list-group-item {% if project.checkboxItems.releaseForms %} active {% endif %}">All interviewees have signed release forms</li>
+            <li name="subtitles" class="list-group-item {% if project.checkedItems.subtitles %} active {% endif %}">Subtitles</li>
+            <li name="animate" class="list-group-item {% if project.checkedItems.animate %} active {% endif %}">Anitmated UCL ident on front and end of video</li>
+            <li name="cma" class="list-group-item {% if project.checkedItems.cma %} active {% endif %}">CMA Disclaimer</li>
+            <li name="credits" class="list-group-item {% if project.checkedItems.credits %} active {% endif %}">Accurate credits</li>
+            <li name="music" class="list-group-item {% if project.checkedItems.music %} active {% endif %}">Accurately copyrighted music</li>
+            <li name="fonts" class="list-group-item {% if project.checkedItems.fonts %} active {% endif %}">UCL fonts used in GFX</li>
+            <li name="releaseForms" class="list-group-item {% if project.checkedItems.releaseForms %} active {% endif %}">All interviewees have signed release forms</li>
           </ul>
         </div>
-        <pre id="display-json"></pre>
         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
         <input type="button" name="next" class="next action-button" value="Next"/>
     </fieldset>
@@ -58,8 +57,8 @@
         <h2 class="fs-title">Approve and Upload</h2>
         <h3 class="fs-subtitle">I confirm that</h3>
         <ul id="check-list-box2" class="list-group checked-list-box">
-          <li name="necessarySteps" class="list-group-item {% if project.checkboxItems.necessarySteps %} active {% endif %}">I have completed the necessary steps</li>
-          <li name="accurateInfo" class="list-group-item {% if project.checkboxItems.accurateInfo %} active {% endif %}">The information provided is accurate</li>
+          <li name="necessarySteps" class="list-group-item {% if project.checkedItems.necessarySteps %} active {% endif %}">I have completed the necessary steps</li>
+          <li name="accurateInfo" class="list-group-item {% if project.checkedItems.accurateInfo %} active {% endif %}">The information provided is accurate</li>
         </ul>
         <input type="text" name="videoURL" placeholder="URL to final video" value="{{project.videoURL}}"/>
         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>

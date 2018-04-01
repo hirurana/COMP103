@@ -17,19 +17,6 @@ module.exports = function(app) {
 		res.redirect('/authorise');
 	});
 
-	// app.post("/project/:projectID/save", function(req, res) {
-	// 	db.saveProject(req.params.projectID, {
-	// 		projectName: req.body.projectName,
-	// 		projectManager: req.body.projectManager,
-	// 		managerNum: req.body.managerNum,
-	// 		email: req.body.email,
-	// 		teamMembers: req.body.teamMembers,
-	// 		budget: req.body.budget,
-	// 		approver: req.body.approver,
-	// 		videoURL: req.body.videoURL
-	// 	});
-	// 	res.send("")
-	// });
 	app.get("/project/:projectID/:upi/:name", function (req, res) {
 		var upi = req.params.upi;
 		var name = req.params.name;
@@ -67,8 +54,6 @@ module.exports = function(app) {
 		});
 	});
 
-	// WARNING: this doesn't work even with the correct values passed as params
-	// TODO: Need to reload the first project associated with the upi after deleting a project
 	app.post("/delete/:projectID/:upi/:name", function(req, res) {
 		const projectID = req.params.projectID;
 		const upi = req.params.upi;
@@ -163,6 +148,6 @@ module.exports = function(app) {
 	});
 
 	app.get("*", function (req, res) {
-			res.send("Not Found");
+			res.send("ERORR 404: Page Not Found");
 	});
 }
