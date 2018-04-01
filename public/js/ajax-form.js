@@ -1,22 +1,22 @@
+var checkedItems = {
+  subtitles: false,
+  animate: false,
+  cma: false,
+  credits: false,
+  music: false,
+  fonts: false,
+  releaseForms: false,
+  necessarySteps: false,
+  accurateInfo: false
+}
+$('#check-list-box').on('click', function(event) {
+    $("#check-list-box li.active").each(function(idx, li) {
+        debugger
+        checkedItems[$(li).name()] = true;
+    })
+});
+
 function ajaxSubmitForm() {
-  var checkedItems = {
-    subtitles: false,
-    animate: false,
-    cma: false,
-    credits: false,
-    music: false,
-    fonts: false,
-    releaseForms: false,
-    necessarySteps: false,
-    accurateInfo: false
-  }
-  $('#get-checked-data').on('click', function(event) {
-      event.preventDefault();
-      $("#check-list-box li.active").each(function(idx, li) {
-          debugger
-          checkedItems[$(li).name()] = true;
-      })
-  });
 
 
   $.ajax({
