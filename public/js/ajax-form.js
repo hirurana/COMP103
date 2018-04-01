@@ -10,13 +10,17 @@ var checkedItems = {
   accurateInfo: false
 }
 $('#check-list-box').on('click', function(event) {
-    $("#check-list-box li.active").each(function(idx, li) {
-        checkedItems[$(li).attr("name")] = true;
+    $("#check-list-box li").each(function(idx, li) {
+        var $li = $(li)
+        if ($li.hasClass("active")) checkedItems[$li.attr("name")] = true;
+        else checkedItems[$li.attr("name")] = false
     })
 });
 $('#check-list-box2').on('click', function(event) {
-    $("#check-list-box2 li.active").each(function(idx, li) {
-        checkedItems[$(li).attr("name")] = true;
+    $("#check-list-box2 li").each(function(idx, li) {
+        var $li = $(li)
+        if ($li.hasClass("active")) checkedItems[$li.attr("name")] = true;
+        else checkedItems[$li.attr("name")] = false
     })
 });
 
