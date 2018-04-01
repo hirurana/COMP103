@@ -63,10 +63,8 @@
         </ul>
         <input type="text" name="videoURL" placeholder="URL to final video" value="{{project.videoURL}}"/>
         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-        <!--  email approver-->
-        <div class="submitButton">
-          <input type="submit" class="submit submit-button" value="Submit to approver"/>
-        </div>
+        <input type="submit" class="submit submit-button" value="Submit to approver" formaction="/send/{{project.approverEmail}}/{{project.projectManager}}/{{project.videoURL}}/{{project.email}}"/>
+
     </fieldset>
     <fieldset>
 

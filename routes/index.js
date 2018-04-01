@@ -65,6 +65,11 @@ module.exports = function(app) {
 		});
 	});
 
+	app.post("/send/:approverEmail/:projectManager/:url/:pmEmail", function (req, res) {
+		db.sendMail(req.params.approverEmail,req.params.projectManager,req.params.url,req.params.pmEmail, function () {
+			res.send("")
+		})
+	})
 	// works fine
 	app.get('/download/templates', function(req, res){
 		var file = __dirname + '/../public/res/Templates.zip';
