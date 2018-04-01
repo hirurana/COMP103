@@ -21,14 +21,18 @@ $('#check-list-box2').on('click', function(event) {
 });
 
 function ajaxSubmitForm() {
-
+  const arrayFormData = $("#msform").serializeArray()
+  const data = {}
+  arrayFormData.forEach(function(inputData) {
+    data[inputData.name] = inputData.value
+  })
+  data.checkedItems = checkedItems
 
   $.ajax({
     type: "POST",
     url: $("#msform").attr("action"),
-    data: $("#msform").serialize(),
+    data: JSON.stringify(data),
     success: function() {
-      console.log("XXX", $("#msform").serialize(), checkedItems)
       console.log("Saving")
     }
   })
