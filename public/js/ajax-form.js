@@ -11,7 +11,11 @@ var checkedItems = {
 }
 $('#check-list-box').on('click', function(event) {
     $("#check-list-box li.active").each(function(idx, li) {
-        debugger
+        checkedItems[$(li).name()] = true;
+    })
+});
+$('#check-list-box2').on('click', function(event) {
+    $("#check-list-box2 li.active").each(function(idx, li) {
         checkedItems[$(li).name()] = true;
     })
 });
