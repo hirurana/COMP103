@@ -77,9 +77,7 @@ $(".previous").click(function(){
   });
 });
 
-$(".submit").click(function(){
-  return false;
-})
+
 
 
 //checkbox js
