@@ -65,7 +65,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/send/:approverEmail/:projectManager/:url/:pmEmail", function (req, res) {
+	app.post("/send/:projectID:approverEmail/:projectManager/:url/:pmEmail", function (req, res) {
 		db.sendMail(req.params.approverEmail,req.params.projectManager,req.params.url,req.params.pmEmail, function () {
 			console.log("sent to approverEmail");
 			res.send("")
@@ -84,13 +84,6 @@ module.exports = function(app) {
 		var file = __dirname + '/../public/res/Supplier\ table.pdf';
 		res.download(file);
 	})
-
-	app.get('/sendToApprover', function (req, res) {
-		// TODO: call save flow
-		// TODO: get approver email
-		// TODO: call function to send Email
-		// TODO: redirect user to complete page
-	});
 
 	app.post("/save/:projectID", function (req, res) {
 		console.log("---------------------")

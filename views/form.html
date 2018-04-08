@@ -41,7 +41,6 @@
         <h3 class="fs-subtitle">Have you done the following?</h3>
         <div class="well">
           <ul id="check-list-box" class="list-group checked-list-box">
-            <!-- TODO: SORT THIS SHIT OUT -->
             <li name="subtitles" class="list-group-item active" >Subtitles</li>
             <li name="animate" class="list-group-item {% if project.checkedItems.animate %} active {% endif %}" data-checked="{{project.checkedItems.animate}}">Anitmated UCL ident on front and end of video</li>
             <li name="cma" class="list-group-item {% if project.checkedItems.cma %} active {% endif %}" data-checked="{{project.checkedItems.cma}}">CMA Disclaimer</li>
@@ -62,7 +61,7 @@
           <li name="accurateInfo" class="list-group-item {% if project.checkedItems.accurateInfo %} active {% endif %}" data-checked="{{project.checkedItems.accurateInfo}}">The information provided is accurate</li>
         </ul>
         <input type="text" name="videoURL" placeholder="URL to final video" value="{{project.videoURL}}"/>
-        <form action="/send/{{project.approverEmail}}/{{project.projectManager}}/{{project.videoURL}}/{{project.email}}" method="POST">
+        <form action="/send/{{currentProjectID}}/{{project.approverEmail}}/{{project.projectManager}}/{{project.videoURL}}/{{project.email}}" method="POST">
           <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
           <input type="submit" class="submit submit-button" value="Submit to approver"/>
         </form>
