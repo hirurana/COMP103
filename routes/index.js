@@ -65,9 +65,9 @@ module.exports = function(app) {
 		});
 	});
 
-	app.post("/send/:projectID:approverEmail/:projectManager/:url/:pmEmail", function (req, res) {
+	app.post("/send/:approverEmail/:projectManager/:url/:pmEmail", function (req, res) {
 		db.sendMail(req.params.approverEmail,req.params.projectManager,req.params.url,req.params.pmEmail, function () {
-			console.log("sent to approverEmail");
+			console.log("Email Sent");
 			res.send("")
 		})
 	})

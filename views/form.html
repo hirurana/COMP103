@@ -13,7 +13,7 @@
         <input type="text" name="projectName" placeholder="Project Name" maxlength="40" value="{{project.projectName}}"/>
         <input type="text" name="projectManager" placeholder="Project Manager Name" value="{{project.projectManager}}" autocomplete="name"/>
         <input type="tel" name="managerNum" placeholder="Contact Number" value="{{project.managerNum}}" autocomplete="mobile"/>
-        <input type="email" name="email" placeholder="example@example.com" value="{{project.email}}" autocomplete="email"/>
+        <input type="email" name="email" placeholder="Project Manager Email" value="{{project.email}}" autocomplete="email"/>
         <input type="text" name="teamMembers" placeholder="Team Members" value="{{project.teamMembers}}"/>
         <input type="number" min="0.00" step="0.01" name="budget" placeholder="Budget" value="{{project.budget}}"/>
         <input type="email" name="approverEmail" placeholder="Approver's Email" value="{{project.approverEmail}}"/>
@@ -61,7 +61,7 @@
           <li name="accurateInfo" class="list-group-item {% if project.checkedItems.accurateInfo %} active {% endif %}" data-checked="{{project.checkedItems.accurateInfo}}">The information provided is accurate</li>
         </ul>
         <input type="text" name="videoURL" placeholder="URL to final video" value="{{project.videoURL}}"/>
-        <form action="/send/{{currentProjectID}}/{{project.approverEmail}}/{{project.projectManager}}/{{project.videoURL}}/{{project.email}}" method="POST">
+        <form id="submit" action="/send/{{project.approverEmail}}/{{project.projectManager}}/{{project.videoURL}}/{{project.email}}" method="POST">
           <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
           <input type="submit" class="submit submit-button" value="Submit to approver"/>
         </form>

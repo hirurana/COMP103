@@ -48,6 +48,16 @@ function ajaxSubmitForm() {
   })
 }
 
+function ajaxEmail() {
+  $.ajax({
+    type: "POST",
+    url: $("submit").attr("action"),
+    success: function () {
+      console.log("Email sent");
+    }
+  })
+}
+
 var getUrlParameter = function getUrlParameter(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
       sURLVariables = sPageURL.split('&'),
