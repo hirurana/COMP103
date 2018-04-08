@@ -51,7 +51,7 @@ function ajaxSubmitForm() {
 function ajaxEmail() {
   $.ajax({
     type: "POST",
-    url: $("submit").attr("action"),
+    url: $("submitBox").attr("action"),
     success: function () {
       console.log("Email sent");
     }
