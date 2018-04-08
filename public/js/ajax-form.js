@@ -49,11 +49,11 @@ function ajaxSubmitForm() {
 }
 
 function ajaxEmail() {
-  const arrayFormData = $("#submit").serializeArray()
-  const data = {}
-  arrayFormData.forEach(function(inputData) {
-    data[inputData.name] = inputData.value
-  })
+  // const arrayFormData = $("#msform").serializeArray()
+  // const data = {}
+  // arrayFormData.forEach(function(inputData) {
+  //   data[inputData.name] = inputData.value
+  // })
   $.ajax({
     type: "POST",
     url: $("#submitBox").attr("action"),
