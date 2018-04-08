@@ -88,10 +88,10 @@ module.exports = function(app) {
 	app.post("/save/:projectID", function (req, res) {
 		console.log("---------------------")
 		// console.log(JSON.parse(Object.keys(req.body)[0]))
-		// console.log(Object.keys(req.body)[0]);
+		console.log(Object.keys(req.body)[0]);
 		console.log("---------------------")
 		if (Object.keys(req.body)[0] == "projectName") {
-			db.saveProject(req.params.projectID, JSON.parse(req.body));
+			db.saveProject(req.params.projectID, JSON.parse(JSON.stringify(req.body)));
 		} else {
 			db.saveProject(req.params.projectID, JSON.parse(Object.keys(req.body)[0]));
 		}
