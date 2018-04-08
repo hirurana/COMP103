@@ -78,6 +78,8 @@ $(".previous").click(function(){
 });
 
 $(".submit").click(function(){
+  ajaxSubmitForm();
+  console.log("Vsllrf ajaxEmail");
   ajaxEmail();
 })
 
