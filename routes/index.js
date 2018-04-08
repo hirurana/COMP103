@@ -90,7 +90,11 @@ module.exports = function(app) {
 		// console.log(JSON.parse(Object.keys(req.body)[0]))
 		console.log(Object.keys(req.body)[0]);
 		console.log("---------------------")
-		db.saveProject(req.params.projectID, JSON.parse(Object.keys(req.body)[0]));
+		if (Object.keys(req.body)[0] == "projectName") {
+			db.saveProject(req.params.projectID, JSON.parse(req.body));
+		} else {
+			db.saveProject(req.params.projectID, JSON.parse(Object.keys(req.body)[0]));
+		}
 		res.send("");
 	})
 
