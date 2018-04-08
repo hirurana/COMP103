@@ -78,7 +78,6 @@ $(".previous").click(function(){
 });
 
 $(".submit").click(function(){
-  ajaxSubmitForm();
   ajaxEmail();
 })
 
